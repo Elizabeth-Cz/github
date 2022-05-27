@@ -12,6 +12,7 @@ let selectedColor, active;
 // EVENT LISTENERS
 
 mealContainer.addEventListener("click", selectMeal);
+scheduleContainer.addEventListener("click", setColors);
 
 // Meal click
 
@@ -21,23 +22,40 @@ function selectMeal(e) {
 
   switch (e.target.id) {
     case "green-curry":
-      activeMeal(greenCurry);
+      activeMeal(greenCurry, mealColor);
+      text = e.target.innerHTML;
       break;
     case "meatballs":
-      activeMeal(meatballs);
+      activeMeal(meatballs, mealColor);
+      text = e.target.innerHTML;
       break;
     case "greek-salad":
-      activeMeal(greekSalad);
+      activeMeal(greekSalad, mealColor);
+      text = e.target.innerHTML;
       break;
     case "mushroom-pasta":
-      activeMeal(mushroomPasta);
+      activeMeal(mushroomPasta, mealColor);
+      text = e.target.innerHTML;
       break;
     case "couscous":
-      activeMeal(couscous);
+      activeMeal(couscous, mealColor);
+      text = e.target.innerHTML;
       break;
     case "chicken-salad":
-      activeMeal(chickenSalad);
+      activeMeal(chickenSalad, mealColor);
+      text = e.target.innerHTML;
       break;
+  }
+}
+document.querySelector("#chicken-salad").addEventListener("click", (e) => {
+  console.log(e);
+  console.log(e.target.innerHTML);
+});
+// set color for schedule
+function setColors(e) {
+  if (e.target.classList.contains("meal") && active === true) {
+    e.target.style.backgroundColor = selectedColor;
+    e.target.innerHTML = text;
   }
 }
 
